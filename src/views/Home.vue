@@ -10,7 +10,7 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import { useMousePosition } from '../hook/page.js'
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 export default {
   name: 'Home',
@@ -23,6 +23,9 @@ export default {
     const updateMsg = (e) => {
       msg.value = e
     }
+    watchEffect(() => {
+      console.log(x.value, y.value)
+    })
     return { msg, updateMsg, x, y }
   }
 }

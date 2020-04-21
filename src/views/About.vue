@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { reactive, ref, computed, onMounted, watch } from 'vue'
+import { reactive, ref, computed, onMounted, watch, watchEffect } from 'vue'
 export default {
   setup () {
     const name = reactive({
@@ -24,6 +24,9 @@ export default {
     })
     watch(count, (newVal, oldVal) => {
       console.log(newVal, oldVal)
+    })
+    watchEffect(() => {
+      console.log(count.value)
     })
     return { name, count, increamt, computedCount }
   }
